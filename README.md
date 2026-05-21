@@ -17,6 +17,6 @@ Por hora quero apenas finalizar as seguintes tarefas:
 
 **Para o futuro, e conforme eu finalmente conseguir aprender como fazer isso, quero separar o código em vários arquivos de forma a facilitar a leitura, até porque neste momento todo o código encontra-se em um arquivo html, um arquivo css, e um arquivo de js, e eu to começando a me perder.**
 
-Por favor, se tiverem sugestões podem me chamar no DISCORD ou abre um Issue. 
+Por favor, se tiverem sugestões podem me chamar no DISCORD (raycworld) ou abre um Issue. 
 
 > OBS. apesar de estar criando esse jogo há alguns dias aprendi a usar o git e o github agora e por isso estou fazendo esse push enorme de uma única vez.
