@@ -302,40 +302,40 @@ main {
   background-color: var(--bg-light);
 }
 
-.fire .div-name-container {
+.fogo .div-name-container {
   background-color: var(--bg);
   border: 1px solid var(--fire);
   
 }
 
-.fire .div-name-container h3 {
+.fogo .div-name-container h3 {
   color: var(--fire);
 }
 
-.water .div-name-container {
+.agua .div-name-container {
   background-color: var(--bg);
   border: 1px solid var(--water);
 }
 
-.water .div-name-container h3 {
+.agua .div-name-container h3 {
   color: var(--water);
 }
 
-.earth .div-name-container {
+.terra .div-name-container {
   background-color: var(--bg);
   border: 1px solid var(--earth);
 }
 
-.earth .div-name-container h3 {
+.terra .div-name-container h3 {
   color: var(--earth);
 }
 
-.air .div-name-container {
+.ar .div-name-container {
   background-color: var(--bg);
   border: 1px solid var(--air);
 }
 
-.air .div-name-container h3 {
+.ar .div-name-container h3 {
   color: var(--air);
 }
 
@@ -443,3 +443,56 @@ main {
   padding: 10px;
   font-size: 14px;
 }
+
+.div-batalha-evento {
+  width: 95%;
+  height: 150px;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-muted);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.div-nome-inimigo {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-batalha-evento .fogo {
+  border: 2px solid var(--fire);
+}
+
+ .agua {
+  border: 1px solid var(--water);
+}
+
+.terra {
+  border: 1px solid var(--earth);
+}
+
+.ar {
+  border: 1px solid var(--air);
+}
+
+
+.div-elemento-inimigo {
+
+}
+.p-elemento-inimigo {
+
+}
+.p-tempo-limite {
+
+}
+.div-tempo-visual {
+
+}
+.button-ataque {
+
+}
+

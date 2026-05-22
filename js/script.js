@@ -640,16 +640,16 @@ function addInvocation(arr) {
 
     switch (fonte.elemento) {
       case "fogo":
-        divCreature.classList.add("fire");
+        divCreature.classList.add("fogo");
         break;
       case "agua":
-        divCreature.classList.add("water");
+        divCreature.classList.add("agua");
         break;
       case "terra":
-        divCreature.classList.add("earth");
+        divCreature.classList.add("terra");
         break;
       case "ar":
-        divCreature.classList.add("air");
+        divCreature.classList.add("ar");
         break;
     }
 
@@ -816,6 +816,86 @@ function game() {
     player.showStatistics();
   }, 1000);
 }
+
+function battle() {
+  let inimigo = []
+  console.log(player.manaPorSegundo)
+  if (player.manaPorSegundo <= 10) {
+    const monstrosFracos = [0, 5, 10, 15]
+    let sortearmonstro = Math.floor(Math.random() * monstrosFracos.length)
+    inimigo = inimigos[monstrosFracos[sortearmonstro]]
+  }
+  if (player.manaPorSegundo > 10 && player.manaPorSegundo <= 30) {
+    const monstrosMedios = [0, 1, 5, 6, 10, 11, 15, 16]
+    let sortearmonstro = Math.floor(Math.random() * monstrosMedios.length)
+    inimigo = inimigos[monstrosMedios[sortearmonstro]]
+  }
+  if (player.manaPorSegundo > 30 && player.manaPorSegundo <= 80) {
+    const monstrosFortes = [0, 1, 2, 5, 6, 7, 10, 11, 12, 15, 16, 17]
+    let sortearmonstro = Math.floor(Math.random() * monstrosFortes.length)
+    inimigo = inimigos[monstrosFortes[sortearmonstro]]
+  }
+  if (player.manaPorSegundo > 80 && player.manaPorSegundo <= 150) {
+    const monstrosDificeis = [0, 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 15, 16, 17, 18]
+    let sortearmonstro = Math.floor(Math.random() * monstrosDificeis.length)
+    inimigo = inimigos[monstrosDificeis[sortearmonstro]]
+  }
+  if (player.manaPorSegundo > 150 && player.manaPorSegundo <= 300) {
+    const monstrosImpossiveis = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    let sortearmonstro = Math.floor(Math.random() * monstrosImpossiveis.length)
+    inimigo = inimigos[monstrosImpossiveis[sortearmonstro]]
+  }
+  
+  const divBatalhaEvent = document.createElement("div")
+  const divNomeInimigo = document.createElement("div")
+  const pNomeInimigo = document.createElement("p")
+  const divElemento = document.createElement("div")
+  const pElemento = document.createElement("p")
+  const divTempo = document.createElement("div")
+  const pTempoLimite = document.createElement("p")
+  const divTempoVisual = document.createElement("div")
+  const divButton = document.createElement("div")
+  const btnAtaque = document.createElement("button")
+
+  divBatalhaEvent.classList.add("div-batalha-evento")
+  divNomeInimigo.classList.add("div-nome-inimigo")
+  pNomeInimigo.classList.add("p-nome-inimigo")
+  divElemento.classList.add("div-elemento-inimigo")
+  pElemento.classList.add("p-elemento-inimigo")
+  divTempo.classList.add("div-tempo-inimigo")
+  pTempoLimite.classList.add("p-tempo-limite")
+  divTempoVisual.classList.add("div-tempo-visual")
+  divButton.classList.add("div-button-ataque")
+  btnAtaque.classList.add("button-ataque")
+
+  divNomeInimigo.classList.add(inimigo.elemento)
+  
+  console.log(inimigo)
+
+  pNomeInimigo.textContent = inimigo.nome
+  pElemento.textContent = `Elemento ${inimigo.elemento}`
+  pTempoLimite.textContent = `Tempo restante: ${inimigo.tempoLimite}`
+  btnAtaque.textContent = "Bater com o Cajado"
+
+  divNomeInimigo.appendChild(pNomeInimigo)
+  divElemento.appendChild(pElemento)
+  divTempo.appendChild(pTempoLimite)
+  divTempo.appendChild(divTempoVisual)
+  divButton.appendChild(btnAtaque)
+
+  
+
+  divBatalhaEvent.appendChild(divNomeInimigo)
+  divBatalhaEvent.appendChild(divElemento)
+  divBatalhaEvent.appendChild(divTempo)
+  divBatalhaEvent.appendChild(divButton)
+
+  divLogHistory.appendChild(divBatalhaEvent)
+
+  log.pauseEventVerify = true
+}
+
+battle()
 
 // inicializar
 game();
