@@ -187,6 +187,288 @@ const eventos = [
   "Flores encantadas desabrocharam no peitoril da janela ao seu entusiasmo.",
   "Uma coruja sábia pousou no seu ombro e piscou um olho sabiamente.",
 ];
+const inimigos = [
+  // — Fogo —
+  { nome: "Brasa Rastejante", vida: 50,  elemento: "fogo",  tempoLimite: 15, recompensa: 5  },
+  { nome: "Salamandra Selvagem", vida: 120, elemento: "fogo",  tempoLimite: 20, recompensa: 12 },
+  { nome: "Espírito das Chamas", vida: 280, elemento: "fogo",  tempoLimite: 25, recompensa: 30 },
+  { nome: "Golem de Magma",      vida: 600, elemento: "fogo",  tempoLimite: 30, recompensa: 70 },
+  { nome: "Senhor do Inferno",   vida: 1200, elemento: "fogo", tempoLimite: 40, recompensa: 150 },
+
+  // — Água —
+  { nome: "Lodo Aquático",       vida: 45,  elemento: "agua",  tempoLimite: 15, recompensa: 5  },
+  { nome: "Caranguejo Abissal",  vida: 110, elemento: "agua",  tempoLimite: 20, recompensa: 12 },
+  { nome: "Serpente das Marés",  vida: 260, elemento: "agua",  tempoLimite: 25, recompensa: 30 },
+  { nome: "Hidra das Profundezas",vida: 580, elemento: "agua", tempoLimite: 30, recompensa: 70 },
+  { nome: "Leviatã Primordial",  vida: 1150, elemento: "agua", tempoLimite: 40, recompensa: 150 },
+
+  // — Ar —
+  { nome: "Faísca Errante",      vida: 40,  elemento: "ar",   tempoLimite: 15, recompensa: 5  },
+  { nome: "Espectro do Vento",   vida: 100, elemento: "ar",   tempoLimite: 20, recompensa: 12 },
+  { nome: "Harpia Tempestuosa",  vida: 240, elemento: "ar",   tempoLimite: 25, recompensa: 30 },
+  { nome: "Djinn Furioso",       vida: 550, elemento: "ar",   tempoLimite: 30, recompensa: 70 },
+  { nome: "Imperador dos Ventos",vida: 1100, elemento: "ar",  tempoLimite: 40, recompensa: 150 },
+
+  // — Terra —
+  { nome: "Pedra Animada",       vida: 60,  elemento: "terra", tempoLimite: 15, recompensa: 5  },
+  { nome: "Gnomo Furioso",       vida: 140, elemento: "terra", tempoLimite: 20, recompensa: 12 },
+  { nome: "Troll de Granito",    vida: 320, elemento: "terra", tempoLimite: 25, recompensa: 30 },
+  { nome: "Colosso de Pedra",    vida: 650, elemento: "terra", tempoLimite: 30, recompensa: 70 },
+  { nome: "Behemoth das Eras",   vida: 1300, elemento: "terra",tempoLimite: 40, recompensa: 150 },
+];
+const itens = [
+  // — Cabeça —
+  {
+    nome: "Capuz de Aprendiz",
+    slot: "cabeca",
+    descricao: "Fontes de mana geram 10% mais mana por segundo.",
+    efeito: { alvo: "fonteMana", bonus: 0.10 },
+    valor: 50,
+    raridade: "normal"
+  },
+  {
+    nome: "Tiara Arcana",
+    slot: "cabeca",
+    descricao: "Invocações de ar causam 12% mais dano por segundo.",
+    efeito: { alvo: "invocacaoAr", bonus: 0.12 },
+    valor: 80,
+    raridade: "normal"
+  },
+  {
+    nome: "Elmo de Pedra Rúnica",
+    slot: "cabeca",
+    descricao: "Invocações de terra causam 12% mais dano por segundo.",
+    efeito: { alvo: "invocacaoTerra", bonus: 0.12 },
+    valor: 80,
+    raridade: "normal"
+  },
+  {
+    nome: "Capuz do Sábio",
+    slot: "cabeca",
+    descricao: "Todas as fontes de mana geram 18% mais mana por segundo.",
+    efeito: { alvo: "fonteMana", bonus: 0.18 },
+    valor: 120,
+    raridade: "normal"
+  },
+  {
+    nome: "Coroa do Cosmos",
+    slot: "cabeca",
+    descricao: "Todas as invocações causam 30% mais dano por segundo.",
+    efeito: { alvo: "todasInvocacoes", bonus: 0.30 },
+    valor: 500,
+    raridade: "raro"
+  },
+
+  // — Pés —
+  {
+    nome: "Sandálias de Viajante",
+    slot: "pes",
+    descricao: "Invocações de fogo causam 10% mais dano por segundo.",
+    efeito: { alvo: "invocacaoFogo", bonus: 0.10 },
+    valor: 50,
+    raridade: "normal"
+  },
+  {
+    nome: "Botas de Couro Arcano",
+    slot: "pes",
+    descricao: "Fontes de mana geram 12% mais mana por segundo.",
+    efeito: { alvo: "fonteMana", bonus: 0.12 },
+    valor: 80,
+    raridade: "normal"
+  },
+  {
+    nome: "Sapatos de Névoa",
+    slot: "pes",
+    descricao: "Invocações de água causam 12% mais dano por segundo.",
+    efeito: { alvo: "invocacaoAgua", bonus: 0.12 },
+    valor: 80,
+    raridade: "normal"
+  },
+  {
+    nome: "Botas Rúnicas",
+    slot: "pes",
+    descricao: "Invocações de ar causam 18% mais dano por segundo.",
+    efeito: { alvo: "invocacaoAr", bonus: 0.18 },
+    valor: 120,
+    raridade: "normal"
+  },
+  {
+    nome: "Passos do Éter",
+    slot: "pes",
+    descricao: "Todas as fontes de mana geram 35% mais mana por segundo.",
+    efeito: { alvo: "fonteMana", bonus: 0.35 },
+    valor: 500,
+    raridade: "raro"
+  },
+
+  // — Roupão —
+  {
+    nome: "Roupão de Algodão Arcano",
+    slot: "roupao",
+    descricao: "Invocações de terra causam 10% mais dano por segundo.",
+    efeito: { alvo: "invocacaoTerra", bonus: 0.10 },
+    valor: 50,
+    raridade: "normal"
+  },
+  {
+    nome: "Manto do Iniciado",
+    slot: "roupao",
+    descricao: "Fontes de mana geram 12% mais mana por segundo.",
+    efeito: { alvo: "fonteMana", bonus: 0.12 },
+    valor: 80,
+    raridade: "normal"
+  },
+  {
+    nome: "Vestes de Chama",
+    slot: "roupao",
+    descricao: "Invocações de fogo causam 15% mais dano por segundo.",
+    efeito: { alvo: "invocacaoFogo", bonus: 0.15 },
+    valor: 80,
+    raridade: "normal"
+  },
+  {
+    nome: "Manto do Arquimago",
+    slot: "roupao",
+    descricao: "Todas as invocações causam 18% mais dano por segundo.",
+    efeito: { alvo: "todasInvocacoes", bonus: 0.18 },
+    valor: 120,
+    raridade: "normal"
+  },
+  {
+    nome: "Vestes do Vazio",
+    slot: "roupao",
+    descricao: "Fontes de mana geram 40% mais mana e invocações causam 20% mais dano.",
+    efeito: { alvo: "tudo", bonus: { fonteMana: 0.40, todasInvocacoes: 0.20 } },
+    valor: 500,
+    raridade: "raro"
+  },
+
+  // — Luvas —
+  {
+    nome: "Luvas de Tecido",
+    slot: "luvas",
+    descricao: "Invocações de água causam 10% mais dano por segundo.",
+    efeito: { alvo: "invocacaoAgua", bonus: 0.10 },
+    valor: 50,
+    raridade: "normal"
+  },
+  {
+    nome: "Luvas Rúnicas",
+    slot: "luvas",
+    descricao: "Invocações de fogo causam 12% mais dano por segundo.",
+    efeito: { alvo: "invocacaoFogo", bonus: 0.12 },
+    valor: 80,
+    raridade: "normal"
+  },
+  {
+    nome: "Manoplas de Gelo",
+    slot: "luvas",
+    descricao: "Invocações de água causam 15% mais dano por segundo.",
+    efeito: { alvo: "invocacaoAgua", bonus: 0.15 },
+    valor: 80,
+    raridade: "normal"
+  },
+  {
+    nome: "Luvas do Elementalista",
+    slot: "luvas",
+    descricao: "Fontes de mana geram 18% mais mana por segundo.",
+    efeito: { alvo: "fonteMana", bonus: 0.18 },
+    valor: 120,
+    raridade: "normal"
+  },
+  {
+    nome: "Mãos do Caos",
+    slot: "luvas",
+    descricao: "Invocações de fogo e terra causam 35% mais dano por segundo.",
+    efeito: { alvo: "invocacaoFogoTerra", bonus: 0.35 },
+    valor: 500,
+    raridade: "raro"
+  },
+
+  // — Colar —
+  {
+    nome: "Amuleto de Osso",
+    slot: "colar",
+    descricao: "Invocações de ar causam 10% mais dano por segundo.",
+    efeito: { alvo: "invocacaoAr", bonus: 0.10 },
+    valor: 50,
+    raridade: "normal"
+  },
+  {
+    nome: "Colar de Cristal",
+    slot: "colar",
+    descricao: "Fontes de mana geram 15% mais mana por segundo.",
+    efeito: { alvo: "fonteMana", bonus: 0.15 },
+    valor: 80,
+    raridade: "normal"
+  },
+  {
+    nome: "Pingente de Chama",
+    slot: "colar",
+    descricao: "Invocações de fogo causam 15% mais dano por segundo.",
+    efeito: { alvo: "invocacaoFogo", bonus: 0.15 },
+    valor: 80,
+    raridade: "normal"
+  },
+  {
+    nome: "Colar do Druida",
+    slot: "colar",
+    descricao: "Invocações de terra causam 18% mais dano por segundo.",
+    efeito: { alvo: "invocacaoTerra", bonus: 0.18 },
+    valor: 120,
+    raridade: "normal"
+  },
+  {
+    nome: "Orbe da Criação",
+    slot: "colar",
+    descricao: "Invocações de água e ar causam 35% mais dano por segundo.",
+    efeito: { alvo: "invocacaoAguaAr", bonus: 0.35 },
+    valor: 500,
+    raridade: "raro"
+  },
+
+  // — Pet —
+  {
+    nome: "Ratinho Arcano",
+    slot: "pet",
+    descricao: "Fontes de mana geram 8% mais mana por segundo.",
+    efeito: { alvo: "fonteMana", bonus: 0.08 },
+    valor: 50,
+    raridade: "normal"
+  },
+  {
+    nome: "Coruja Mística",
+    slot: "pet",
+    descricao: "Invocações de ar causam 12% mais dano por segundo.",
+    efeito: { alvo: "invocacaoAr", bonus: 0.12 },
+    valor: 80,
+    raridade: "normal"
+  },
+  {
+    nome: "Lagartixa de Lava",
+    slot: "pet",
+    descricao: "Invocações de fogo causam 12% mais dano por segundo.",
+    efeito: { alvo: "invocacaoFogo", bonus: 0.12 },
+    valor: 80,
+    raridade: "normal"
+  },
+  {
+    nome: "Tartaruga Rúnica",
+    slot: "pet",
+    descricao: "Invocações de terra causam 15% mais dano por segundo.",
+    efeito: { alvo: "invocacaoTerra", bonus: 0.15 },
+    valor: 120,
+    raridade: "normal"
+  },
+  {
+    nome: "Dragãozinho do Caos",
+    slot: "pet",
+    descricao: "Todas as invocações causam 25% mais dano e fontes geram 20% mais mana.",
+    efeito: { alvo: "tudo", bonus: { todasInvocacoes: 0.25, fonteMana: 0.20 } },
+    valor: 500,
+    raridade: "raro"
+  },
+];
 
 const divManaContainer = document.querySelector("#mana-container");
 const divInvocacoes = document.querySelector("#creature-container");
