@@ -1,5 +1,7 @@
 import { player } from "../data/player.js";
-import { stopEvents } from "./log.js";
+import { log,stopEvents } from "./log.js";
+import { game } from "./game.js"
+import { state } from "./state.js";
 
 function battle(divLogHistory, inimigos, playerGoldTotal) {
   let inimigo = [];
@@ -20,16 +22,12 @@ function battle(divLogHistory, inimigos, playerGoldTotal) {
     inimigo = inimigos[monstrosFortes[sortearmonstro]];
   }
   if (player.manaPorSegundo > 80 && player.manaPorSegundo <= 150) {
-    const monstrosDificeis = [
-      2, 3, 7, 8, 12, 13, 17, 18,
-    ];
+    const monstrosDificeis = [2, 3, 7, 8, 12, 13, 17, 18];
     let sortearmonstro = Math.floor(Math.random() * monstrosDificeis.length);
     inimigo = inimigos[monstrosDificeis[sortearmonstro]];
   }
   if (player.manaPorSegundo > 150) {
-    const monstrosImpossiveis = [
-      3, 4, 8, 9, 13, 14, 18, 19,
-    ];
+    const monstrosImpossiveis = [3, 4, 8, 9, 13, 14, 18, 19];
     let sortearmonstro = Math.floor(Math.random() * monstrosImpossiveis.length);
     inimigo = inimigos[monstrosImpossiveis[sortearmonstro]];
   }
@@ -89,9 +87,10 @@ function battle(divLogHistory, inimigos, playerGoldTotal) {
     const porcentagem = (vidaInimigo / inimigo.vida) * 100;
     divVidaVisual.style.width = `${porcentagem}%`;
   });
+  let intervaloAtivo;
   calcDmg();
   function calcDmg() {
-    const intervalo = setInterval(() => {
+    intervaloAtivo = setInterval(() => {
       vidaInimigo -= player.danoPorSegundo;
       tempoRestante--;
       const porcentagem = (vidaInimigo / inimigo.vida) * 100;
@@ -101,7 +100,7 @@ function battle(divLogHistory, inimigos, playerGoldTotal) {
       pTempoLimite.textContent = `Tempo restante: ${tempoRestante}`;
 
       if (vidaInimigo <= 0) {
-        clearInterval(intervalo);
+        clearInterval(intervaloAtivo);
         divBatalhaEvent.innerHTML = "";
 
         const divVitoriaResult = document.createElement("div");
@@ -150,11 +149,74 @@ function battle(divLogHistory, inimigos, playerGoldTotal) {
       }
 
       if (tempoRestante <= 0) {
-        clearInterval(intervalo);
+        clearInterval(intervaloAtivo);
+        divBatalhaEvent.innerHTML = "";
+
+        const divDerrotaResult = document.createElement("div");
+        const h4DerrotaResult = document.createElement("h4");
+        const divPunish = document.createElement("div");
+        const pPunishLife = document.createElement("p");
+        const pPunishMoney = document.createElement("p");
+        const iPunish = document.createElement("i");
+
+        divBatalhaEvent.style.border = "1px solid var(--vida)";
+
+        divDerrotaResult.style.display = "flex";
+        divDerrotaResult.style.justifyContent = "center";
+        divDerrotaResult.style.alignItems = "center";
+        divDerrotaResult.style.height = "40%";
+        divDerrotaResult.style.width = "100%";
+
+        divPunish.style.display = "flex";
+        divPunish.style.justifyContent = "center";
+        divPunish.style.alignItems = "center";
+        divPunish.style.flexDirection = "row";
+        divPunish.style.height = "60%";
+        divPunish.style.width = "100%";
+        divPunish.style.border = "1px solid var(--border-muted)";
+
+        h4DerrotaResult.textContent = "Derrota";
+        h4DerrotaResult.style.color = "var(--vida)";
+        h4DerrotaResult.style.textTransform = "uppercase";
+        h4DerrotaResult.style.color = "var(--vida)";
+
+        iPunish.style.color = "var(--vida)";
+        iPunish.style.width = "20%";
+
+        pPunishLife.textContent = `Perdeu uma vida`;
+        player.gold /= 2;
+        pPunishMoney.textContent = "Perdeu metade do seu ouro";
+        iPunish.classList.add("fa-solid", "fa-heart");
+        divPunish.appendChild(iPunish);
+        divPunish.appendChild(pPunishLife);
+        divDerrotaResult.appendChild(h4DerrotaResult);
+
+        divBatalhaEvent.appendChild(divDerrotaResult);
+        divBatalhaEvent.appendChild(divPunish);
+
+        stopEvents(divLogHistory);
+        const lastLife = document.querySelector(".icone-life:last-child");
+
+        if (lastLife) {
+          lastLife.remove();
+        }
+
+        if (
+          document.querySelectorAll(".life-container .icone-life").length === 0
+        ) {
+          gameOver(intervaloAtivo);
+          return;
+        }
       }
     }, 1000);
   }
 }
 
+function gameOver(intervaloAtivo) {
+  clearInterval(intervaloAtivo)
+  clearInterval(state.intervaloGame)
+  document.querySelector("#popup-gameover").classList.remove("hidden");
+  log.pauseEventVerify = true
+}
 
-export { battle }
+export { battle };

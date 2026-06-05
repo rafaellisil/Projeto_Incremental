@@ -14,10 +14,10 @@ function eventVerify(divLogHistory, playerGoldTotal) {
   const seed = Math.random().toFixed(2);
   if (!log.pauseEventVerify) {
     console.log(seed*100)
-    if (seed * 100 >= 93 && seed * 100 < 97) {
+    if (seed * 100 >= 93 && seed * 100 < 94) {
       log.pauseEventVerify = true;
       drawEvent(eventos, true, divLogHistory);
-    } else if (seed * 100 >= 97 && seed * 100 < 99) {
+    } else if (seed * 100 >= 94 && seed * 100 < 100) {
       log.pauseEventVerify = true;
       battle(divLogHistory, inimigos, playerGoldTotal);
     }
@@ -55,4 +55,4 @@ function stopEvents(divLogHistory) {
   }, 10000);
 }
 
-export { eventVerify, drawEvent, updateLog, stopEvents}
+export {log, eventVerify, drawEvent, updateLog, stopEvents}

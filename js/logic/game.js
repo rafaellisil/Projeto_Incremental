@@ -1,7 +1,7 @@
 import { eventVerify, drawEvent, updateLog, stopEvents} from "./log.js"
-
+import { state } from "./state.js";
 function game(divLogHistory, divManaStats, divSummonStats, player, playerManaTotal, playerDmgQuantity, fontsMana, criaturas, playerGoldTotal) {
-  setInterval(() => {
+  state.intervaloGame = setInterval(() => {
     // atualizar a mana e dano por segundo no info
     updatePlayer(divLogHistory, divManaStats, divSummonStats, player, playerManaTotal, playerDmgQuantity);
 

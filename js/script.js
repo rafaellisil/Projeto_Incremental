@@ -6,8 +6,8 @@ import { inimigos } from "./data/inimigos_db.js"
 import { player } from "./data/player.js"
 import { addFontes } from "./logic/addFontes.js";
 import { addInvocation } from "./logic/addInvocation.js";
-import { eventVerify, drawEvent, updateLog, stopEvents} from "./logic/log.js"
 import { game } from "./logic/game.js"
+import "./logic/reiniciar.js";
 
 const divManaContainer = document.querySelector("#mana-container");
 const divInvocacoes = document.querySelector("#creature-container");
@@ -68,7 +68,7 @@ function trocarDeAba(aba) {
 
 
 // inicializar
-game(divLogHistory, divManaStats, divSummonStats, player, playerManaTotal, playerDmgQuantity, fontsMana, criaturas, playerGoldTotal);
+const intervaloGame = game(divLogHistory, divManaStats, divSummonStats, player, playerManaTotal, playerDmgQuantity, fontsMana, criaturas, playerGoldTotal);
 addFontes(fontsMana, divManaContainer, player, playerGoldTotal, divLogHistory);
 addInvocation(criaturas, divInvocacoes, player, playerManaTotal, divLogHistory);
 trocarDeAba(tabMana);

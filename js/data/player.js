@@ -1,5 +1,5 @@
 let player = {
-  gold: 99999999,
+  gold: 100,
   manaAtual: 0,
   manaPorSegundo: 0,
   danoPorSegundo: 0,
