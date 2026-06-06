@@ -1,10 +1,11 @@
 let player = {
-  gold: 100,
+  gold: 6,
   manaAtual: 0,
   manaPorSegundo: 0,
   danoPorSegundo: 0,
   fontesCompradas: [],
   invocacoesCompradas: [],
+  itensComprados: [],
   danoGolpeCajado: 5,
 
   calcManaPorSegundo() {

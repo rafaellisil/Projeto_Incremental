@@ -1,6 +1,7 @@
 import {eventos} from "../data/eventos_db.js"
 import {inimigos} from "../data/inimigos_db.js"
 import { battle } from "./battle.js"
+import { gerarLoja } from "./loja.js"
 
 let log = {
   pauseEventVerify: false,
@@ -14,12 +15,15 @@ function eventVerify(divLogHistory, playerGoldTotal) {
   const seed = Math.random().toFixed(2);
   if (!log.pauseEventVerify) {
     console.log(seed*100)
-    if (seed * 100 >= 93 && seed * 100 < 94) {
+    if (seed * 100 >= 85 && seed * 100 < 90) {
       log.pauseEventVerify = true;
       drawEvent(eventos, true, divLogHistory);
-    } else if (seed * 100 >= 94 && seed * 100 < 100) {
+    } else if (seed * 100 >= 90 && seed * 100 <= 100) {
       log.pauseEventVerify = true;
       battle(divLogHistory, inimigos, playerGoldTotal);
+    } else if (seed * 100 >= 0 && seed * 100 < 2) {
+      log.pauseEventVerify = true
+      gerarLoja()
     }
   }
 }

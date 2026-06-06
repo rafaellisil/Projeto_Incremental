@@ -211,47 +211,7 @@ const itens = [
   },
 
   // — Pet —
-  {
-    nome: "Ratinho Arcano",
-    slot: "pet",
-    descricao: "Fontes de mana geram 8% mais mana por segundo.",
-    efeito: { alvo: "fonteMana", bonus: 0.08 },
-    valor: 50,
-    raridade: "normal",
-  },
-  {
-    nome: "Coruja Mística",
-    slot: "pet",
-    descricao: "Invocações de ar causam 12% mais dano por segundo.",
-    efeito: { alvo: "invocacaoAr", bonus: 0.12 },
-    valor: 80,
-    raridade: "normal",
-  },
-  {
-    nome: "Lagartixa de Lava",
-    slot: "pet",
-    descricao: "Invocações de fogo causam 12% mais dano por segundo.",
-    efeito: { alvo: "invocacaoFogo", bonus: 0.12 },
-    valor: 80,
-    raridade: "normal",
-  },
-  {
-    nome: "Tartaruga Rúnica",
-    slot: "pet",
-    descricao: "Invocações de terra causam 15% mais dano por segundo.",
-    efeito: { alvo: "invocacaoTerra", bonus: 0.15 },
-    valor: 120,
-    raridade: "normal",
-  },
-  {
-    nome: "Dragãozinho do Caos",
-    slot: "pet",
-    descricao:
-      "Todas as invocações causam 25% mais dano e fontes geram 20% mais mana.",
-    efeito: { alvo: "tudo", bonus: { todasInvocacoes: 0.25, fonteMana: 0.2 } },
-    valor: 500,
-    raridade: "raro",
-  },
+
 ];
 
-export { itens }
+export { itens };

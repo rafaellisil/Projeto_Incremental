@@ -9,6 +9,7 @@ import { addInvocation } from "./logic/addInvocation.js";
 import { game } from "./logic/game.js"
 import "./logic/reiniciar.js";
 
+
 const divManaContainer = document.querySelector("#mana-container");
 const divInvocacoes = document.querySelector("#creature-container");
 const tabMana = document.querySelector(".btnMana");

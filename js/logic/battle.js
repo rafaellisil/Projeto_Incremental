@@ -5,28 +5,27 @@ import { state } from "./state.js";
 
 function battle(divLogHistory, inimigos, playerGoldTotal) {
   let inimigo = [];
-  console.log(player.manaPorSegundo);
-  if (player.manaPorSegundo <= 10) {
+  if (player.danoPorSegundo <= 5) {
     const monstrosFracos = [0, 5, 10, 15];
     let sortearmonstro = Math.floor(Math.random() * monstrosFracos.length);
     inimigo = inimigos[monstrosFracos[sortearmonstro]];
   }
-  if (player.manaPorSegundo > 10 && player.manaPorSegundo <= 30) {
+  if (player.danoPorSegundo > 5 && player.danoPorSegundo <= 15) {
     const monstrosMedios = [0, 1, 5, 6, 10, 11, 15, 16];
     let sortearmonstro = Math.floor(Math.random() * monstrosMedios.length);
     inimigo = inimigos[monstrosMedios[sortearmonstro]];
   }
-  if (player.manaPorSegundo > 30 && player.manaPorSegundo <= 80) {
+  if (player.danoPorSegundo > 15 && player.danoPorSegundo <= 40) {
     const monstrosFortes = [1, 2, 6, 7, 11, 12, 16, 17];
     let sortearmonstro = Math.floor(Math.random() * monstrosFortes.length);
     inimigo = inimigos[monstrosFortes[sortearmonstro]];
   }
-  if (player.manaPorSegundo > 80 && player.manaPorSegundo <= 150) {
+  if (player.danoPorSegundo > 40 && player.danoPorSegundo <= 80) {
     const monstrosDificeis = [2, 3, 7, 8, 12, 13, 17, 18];
     let sortearmonstro = Math.floor(Math.random() * monstrosDificeis.length);
     inimigo = inimigos[monstrosDificeis[sortearmonstro]];
   }
-  if (player.manaPorSegundo > 150) {
+  if (player.danoPorSegundo > 80) {
     const monstrosImpossiveis = [3, 4, 8, 9, 13, 14, 18, 19];
     let sortearmonstro = Math.floor(Math.random() * monstrosImpossiveis.length);
     inimigo = inimigos[monstrosImpossiveis[sortearmonstro]];
