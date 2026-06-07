@@ -14,11 +14,10 @@ function eventVerify(divLogHistory, playerGoldTotal) {
 
   const seed = Math.random().toFixed(2);
   if (!log.pauseEventVerify) {
-    console.log(seed*100)
-    if (seed * 100 >= 85 && seed * 100 < 90) {
+    if (seed * 100 >= 80 && seed * 100 < 85) {
       log.pauseEventVerify = true;
       drawEvent(eventos, true, divLogHistory);
-    } else if (seed * 100 >= 90 && seed * 100 <= 100) {
+    } else if (seed * 100 >= 85 && seed * 100 <= 100) {
       log.pauseEventVerify = true;
       battle(divLogHistory, inimigos, playerGoldTotal);
     } else if (seed * 100 >= 0 && seed * 100 < 2) {
@@ -54,7 +53,7 @@ function stopEvents(divLogHistory) {
   setTimeout(() => {
     log.pauseEventVerify = false;
     const eventWalk = document.createElement("p");
-    eventWalk.textContent = "Caminhando";
+    eventWalk.textContent = "Caminhando 🚶‍♀️‍➡️🏃‍♀️‍➡️";
     divLogHistory.prepend(eventWalk);
   }, 10000);
 }

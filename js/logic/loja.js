@@ -5,6 +5,7 @@ import { state } from "./state.js";
 import { fontsMana } from "../data/fontes_db.js";
 import { criaturas } from "../data/criaturas_db.js";
 import { game } from "./game.js";
+import "./inventory.js"
 
 const divLogHistory = document.querySelector("#log-history");
 const playerGoldTotal = document.querySelector(".gold-quantity");
@@ -180,7 +181,7 @@ function gerarLoja() {
   divTitle.style.height = "15%";
   divTitle.style.border = "2px solid var(--moeda)";
 
-  pTitle.textContent = "Loja";
+  pTitle.textContent = "Loja 💰";
   pTitle.style.setProperty("color", "var(--moeda)", "important");
   pTitle.style.fontWeight = "bold";
   pTitle.style.textTransform = "upperCase";
@@ -229,6 +230,13 @@ function gerarLoja() {
 
     iIconeCoins.classList.add("fa-solid");
     iIconeCoins.classList.add("fa-coins");
+
+    if (item.soldOut) {
+      divProduct.textContent = "Sold Out‼️";
+      divProduct.classList.add("sold-out");
+      divProducts.appendChild(divProduct);
+      return;
+    }
 
     pProductName.textContent = item.nome;
     spanProductRaridade.textContent = item.raridade;
@@ -303,8 +311,24 @@ function gerarLoja() {
       playerGoldTotal.textContent = player.gold;
       divProducts.remove();
       btnComprar.remove();
+      
+      selecionados.forEach(itemSelecionado => {
+        const eventoCompra = `Comprou ${itemSelecionado.querySelector(".product-name").textContent} 💸`;
+        updateLog(eventoCompra, false, divLogHistory);
+      })
+
       stopEvents(divLogHistory);
-      game(divLogHistory, divManaStats, divSummonStats, player, playerManaTotal, playerDmgQuantity, fontsMana, criaturas, playerGoldTotal)
+      game(
+        divLogHistory,
+        divManaStats,
+        divSummonStats,
+        player,
+        playerManaTotal,
+        playerDmgQuantity,
+        fontsMana,
+        criaturas,
+        playerGoldTotal,
+      );
     }
   });
 
@@ -318,8 +342,12 @@ function gerarLoja() {
 
 function sortearItens(itens) {
   let itensSorteados = [];
-  const raros = itens.filter(item => item.raridade === "raro");
-  let normais = itens.filter(item => item.raridade === "normal");
+  const itensDisponiveis = itens.filter(
+    item => !player.itensComprados.includes(item),
+  );
+
+  const raros = itensDisponiveis.filter(item => item.raridade === "raro");
+  let normais = itensDisponiveis.filter(item => item.raridade === "normal");
 
   for (let i = 0; i < 3; i++) {
     const raridade = Math.floor(Math.random() * 100);
@@ -327,10 +355,12 @@ function sortearItens(itens) {
       const index = Math.floor(Math.random() * raros.length);
       itensSorteados.push(raros[index]);
       raros.splice(index, 1);
-    } else {
+    } else if (normais.length > 0) {
       const index = Math.floor(Math.random() * normais.length);
       itensSorteados.push(normais[index]);
       normais.splice(index, 1);
+    } else {
+      itensSorteados.push({ soldOut: true });
     }
   }
 

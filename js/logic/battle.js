@@ -55,8 +55,6 @@ function battle(divLogHistory, inimigos, playerGoldTotal) {
 
   divNomeInimigo.classList.add(inimigo.elemento);
 
-  console.log(inimigo);
-
   pNomeInimigo.textContent = inimigo.nome;
   pElemento.textContent = `Elemento ${inimigo.elemento}`;
   pTempoLimite.textContent = `Tempo restante: ${inimigo.tempoLimite}`;
@@ -95,7 +93,6 @@ function battle(divLogHistory, inimigos, playerGoldTotal) {
       const porcentagem = (vidaInimigo / inimigo.vida) * 100;
       divVidaVisual.style.width = `${porcentagem}%`;
 
-      console.log(vidaInimigo, tempoRestante, porcentagem);
       pTempoLimite.textContent = `Tempo restante: ${tempoRestante}`;
 
       if (vidaInimigo <= 0) {

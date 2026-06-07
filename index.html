@@ -220,10 +220,13 @@
               </svg>
             </div>
             <div class="info">
-              <div class="name-container">
-                <h3 id="nome">RayCWorld</h3>
-              </div>
               <div class="life-container">
+                <div class="icone-life">
+                  <i class="fa-solid fa-heart"></i>
+                </div>
+                <div class="icone-life">
+                  <i class="fa-solid fa-heart"></i>
+                </div>
                 <div class="icone-life">
                   <i class="fa-solid fa-heart"></i>
                 </div>
@@ -259,7 +262,58 @@
               </div>
             </div>
           </div>
-          <div id="player-itens">itens</div>
+          <div id="player-itens" >
+            <div class="head" data-slotItem = "cabeca">
+              <div class="itemEquipado">
+                <p class="slot">Cabeça</p>
+                <div class="itemEquipadoImg" data-slot="cabeca"></div>
+                <div class="itemEfeitoDescricao">
+                  <p class="itemDescricao"></p>
+                </div>
+              </div>
+            </div>
+            <div class="neck" data-slotItem="colar">
+              <div class="itemEquipado" >
+                <p class="slot">Colar</p>
+                <div class="itemEquipadoImg" data-slot="colar"></div>
+                <div class="itemEfeitoDescricao">
+                  <p class="itemDescricao"></p>
+                </div>
+              </div>
+            </div>
+            <div class="body" data-slotItem="roupao">
+              <div class="itemEquipado" >
+                <p class="slot">Corpo</p>
+                <div class="itemEquipadoImg"data-slot="roupao"></div>
+                <div class="itemEfeitoDescricao">
+                  <p class="itemDescricao"></p>
+                </div>
+              </div>
+            </div>
+            <div class="hands" data-slotItem="luvas">
+              <div class="itemEquipado" >
+                <p class="slot">Mãos</p>
+                <div class="itemEquipadoImg"data-slot="luvas"></div>
+                <div class="itemEfeitoDescricao">
+                  <p class="itemDescricao"></p>
+                </div>
+              </div>
+            </div>
+            <div class="foot" data-slotItem="pes">
+              <div class="itemEquipado" >
+                <p class="slot">Pés</p>
+                <div class="itemEquipadoImg" data-slot="pes"></div>
+                <div class="itemEfeitoDescricao">
+                  <p class="itemDescricao"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="popup-itens" class="hidden">
+            <div id="popup-itens-content">
+              <!-- itens do slot vão aparecer aqui dinamicamente -->
+            </div>
+          </div>
         </aside>
         <main>
           <div class="tabBtns">
@@ -303,8 +357,7 @@
       </div>
       <div id="popup-gameover" class="hidden">
         <div class="popup-content">
-          <h2>Game Over</h2>
-          <p>Você morreu</p>
+          <h2>Você morreu</h2>
           <button id="btn-reiniciar">Reiniciar</button>
         </div>
       </div>

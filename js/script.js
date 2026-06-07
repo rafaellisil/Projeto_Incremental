@@ -8,6 +8,7 @@ import { addFontes } from "./logic/addFontes.js";
 import { addInvocation } from "./logic/addInvocation.js";
 import { game } from "./logic/game.js"
 import "./logic/reiniciar.js";
+import { openInventory } from "./logic/inventory.js";
 
 
 const divManaContainer = document.querySelector("#mana-container");
@@ -29,10 +30,6 @@ const divLogHistory = document.querySelector("#log-history");
 
 playerManaTotal.textContent = player.manaAtual.toFixed(2);
 playerGoldTotal.textContent = player.gold;
-
-//Funçõe
-
-
 
 
 
@@ -75,3 +72,4 @@ addInvocation(criaturas, divInvocacoes, player, playerManaTotal, divLogHistory);
 trocarDeAba(tabMana);
 trocarDeAba(tabInvoc);
 trocarDeAba(tabStatistics);
+openInventory()

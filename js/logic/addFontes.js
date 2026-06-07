@@ -1,7 +1,14 @@
-import { eventVerify, drawEvent, updateLog, stopEvents} from "./log.js"
+import { eventVerify, drawEvent, updateLog, stopEvents } from "./log.js";
 
-function addFontes(arr, divManaContainer, player, ouroJogadorTotal, divLogHistory) {
+function addFontes(
+  arr,
+  divManaContainer,
+  player,
+  ouroJogadorTotal,
+  divLogHistory,
+) {
   arr.forEach(fonte => {
+    if (fonte.nome === "Meditar") return;
     const infoNome = fonte.nome;
     const infoManaSecond = fonte.manaPorSegundo;
     const infoPrice = fonte.custaMoedas;
@@ -50,10 +57,16 @@ function addFontes(arr, divManaContainer, player, ouroJogadorTotal, divLogHistor
   });
 }
 
-function comprarMana(player, fonte, quantidade, ouroJogadorTotal, divLogHistory) {
+function comprarMana(
+  player,
+  fonte,
+  quantidade,
+  ouroJogadorTotal,
+  divLogHistory,
+) {
   if (player.gold >= fonte.custaMoedas * quantidade) {
     player.updateGold(fonte, quantidade, ouroJogadorTotal);
-    const eventoCompra = `Comprou ${fonte.nome}`;
+    const eventoCompra = `Comprou ${fonte.nome}💸`;
     updateLog(eventoCompra, false, divLogHistory);
 
     for (let i = 0; i < player.fontesCompradas.length; i++) {
@@ -61,6 +74,7 @@ function comprarMana(player, fonte, quantidade, ouroJogadorTotal, divLogHistory)
 
       if (fonteAtual.nome === fonte.nome) {
         fonteAtual.quantidade += quantidade;
+        player.applyEfects();
         return;
       }
     }
@@ -68,8 +82,10 @@ function comprarMana(player, fonte, quantidade, ouroJogadorTotal, divLogHistory)
       nome: fonte.nome,
       quantidade: 1,
       manaPorSegundo: fonte.manaPorSegundo,
+      bonus: 1,
     });
+    player.applyEfects();
   }
 }
 
-export { addFontes }
+export { addFontes };

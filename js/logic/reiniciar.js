@@ -21,9 +21,17 @@ buttonReiniciar.addEventListener("click", e => {
   player.manaAtual = 0;
   player.manaPorSegundo = 0;
   player.danoPorSegundo = 0;
-  player.fontesCompradas = [];
+  player.fontesCompradas = [{ nome: "Meditar", quantidade: 1, manaPorSegundo: 0.04, bonus: 1 }];
   player.invocacoesCompradas = [];
+  player.itensComprados = [],
   player.danoGolpeCajado = 5;
+  player.itensEquipados = {
+    cabeca: null,
+    pes: null,
+    roupao: null,
+    luvas: null,
+    colar: null,
+  },
 
   playerGoldTotal.textContent = player.gold;
   const lifeContainer = document.querySelector(".life-container");

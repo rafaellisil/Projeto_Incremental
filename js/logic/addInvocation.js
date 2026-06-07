@@ -68,7 +68,7 @@ function addInvocation(arr, divInvocacoes, player, playerManaTotal, divLogHistor
 function comprarInvocacoes(player, invocacao, quantidade, playerManaTotal, divLogHistory) {
   if (player.manaAtual >= invocacao.custaMana * quantidade) {
     player.updateInvocacoes(invocacao, quantidade, playerManaTotal);
-    const eventoCompra = `Comprou ${invocacao.nome}`;
+    const eventoCompra = `Invocou ${invocacao.nome} 🪄`;
     updateLog(eventoCompra, false, divLogHistory);
 
     for (let i = 0; i < player.invocacoesCompradas.length; i++) {
@@ -76,6 +76,7 @@ function comprarInvocacoes(player, invocacao, quantidade, playerManaTotal, divLo
 
       if (invocacaoAtual.nome === invocacao.nome) {
         invocacaoAtual.quantidade += quantidade;
+        player.applyEfects()
         return;
       }
     }
@@ -83,7 +84,10 @@ function comprarInvocacoes(player, invocacao, quantidade, playerManaTotal, divLo
       nome: invocacao.nome,
       quantidade: 1,
       danoPorSegundo: invocacao.danoPorSegundo,
+      elemento: invocacao.elemento,
+      bonus: 1
     });
+    player.applyEfects()
   }
 }
 
