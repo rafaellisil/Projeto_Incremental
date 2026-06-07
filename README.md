@@ -25,8 +25,8 @@ Sei que seria possível adicionar mais coisas e melhorar muito do código, mas e
 
 Coloquei um asterisco na terceira caixinha la em cima porque no meio do caminho eu decidi não trabalhar com responsibidade nesse projeto.
 
-Estou muito feliz com o resultado, espero que gostem, e cuidado pois ele não salva no LocalStorage, então vai começar do zero sim! kkkkkk
+Estou muito feliz com o resultado, espero que gostem e cuidado pois ele não salva no LocalStorage, então vai começar do zero sim! kkkkkk
 
-Por favor, se encontraram algum problema pode me chamar no DISCORD (raycworld) ou abre uma issue.
+Por favor, se encontraram algum problema pode me chamar no DISCORD (raycworld) ou abrir uma issue.
 
-Até o proximo projeto galera <3
+Até o proximo projeto galera. 🔥
